@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.space-grotesk-light {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300; /* Light */
+  font-style: normal;
+}
+
+.space-grotesk-regular {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+.space-grotesk-bold {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}

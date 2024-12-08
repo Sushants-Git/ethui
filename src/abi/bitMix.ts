@@ -1,0 +1,130 @@
+export const bitMixABI = [
+    {
+        inputs: [
+            { internalType: "address", name: "_tokenAddr", type: "address" },
+            { internalType: "address", name: "_verifierAddr", type: "address" },
+            { internalType: "bytes32", name: "_bitmixProgramVKey", type: "bytes32" },
+        ],
+        stateMutability: "nonpayable",
+        type: "constructor",
+    },
+    {
+        anonymous: false,
+        inputs: [
+            { indexed: true, internalType: "address", name: "user", type: "address" },
+            {
+                indexed: true,
+                internalType: "bytes32",
+                name: "orderID",
+                type: "bytes32",
+            },
+            {
+                indexed: false,
+                internalType: "uint256",
+                name: "nonce",
+                type: "uint256",
+            },
+            {
+                indexed: false,
+                internalType: "uint256",
+                name: "amount",
+                type: "uint256",
+            },
+            {
+                indexed: false,
+                internalType: "uint256",
+                name: "timeLock",
+                type: "uint256",
+            },
+        ],
+        name: "Deposit",
+        type: "event",
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: "bytes32",
+                name: "orderID",
+                type: "bytes32",
+            },
+        ],
+        name: "OrderValidated",
+        type: "event",
+    },
+    {
+        inputs: [
+            { internalType: "uint256", name: "amount", type: "uint256" },
+            { internalType: "uint256", name: "timeLock", type: "uint256" },
+            { internalType: "bytes32", name: "pubkey_x", type: "bytes32" },
+            { internalType: "bytes32", name: "pubkey_y", type: "bytes32" },
+        ],
+        name: "deposit",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [{ internalType: "address", name: "", type: "address" }],
+        name: "nonces",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [{ internalType: "bytes32", name: "", type: "bytes32" }],
+        name: "orderMap",
+        outputs: [
+            { internalType: "uint256", name: "amount", type: "uint256" },
+            { internalType: "uint256", name: "timeLock", type: "uint256" },
+            { internalType: "uint256", name: "nonce", type: "uint256" },
+            { internalType: "uint256", name: "depositedAt", type: "uint256" },
+            { internalType: "bytes32", name: "pubkey_x", type: "bytes32" },
+            { internalType: "bytes32", name: "pubkey_y", type: "bytes32" },
+            {
+                components: [
+                    { internalType: "bytes32", name: "pub_a_x", type: "bytes32" },
+                    { internalType: "bytes32", name: "pub_a_y", type: "bytes32" },
+                    { internalType: "bytes32", name: "pub_c_x", type: "bytes32" },
+                    { internalType: "bytes32", name: "pub_c_y", type: "bytes32" },
+                    { internalType: "bytes", name: "cipher", type: "bytes" },
+                ],
+                internalType: "struct ScriptInputs",
+                name: "scriptInputs",
+                type: "tuple",
+            },
+            { internalType: "bool", name: "isValidated", type: "bool" },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [
+            { internalType: "bytes32", name: "orderID", type: "bytes32" },
+            { internalType: "bytes", name: "_publicValues", type: "bytes" },
+            { internalType: "bytes", name: "_proofBytes", type: "bytes" },
+            { internalType: "uint256[1]", name: "blockNumbers", type: "uint256[1]" },
+        ],
+        name: "validate",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "verifier",
+        outputs: [
+            { internalType: "contract BitMixVerifier", name: "", type: "address" },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "wbtcToken",
+        outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
+        stateMutability: "view",
+        type: "function",
+    },
+];
